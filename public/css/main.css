@@ -20,10 +20,9 @@
 .close {
     float: left;
 }
-.setting-head{
+.setting-head,.add-task{
   padding: 20px;
 }
-
 .select-box {
     cursor: pointer;
 }
