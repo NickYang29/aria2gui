@@ -24,7 +24,7 @@ Aria2GUI
 - 导出插件下载：[百度网盘](https://github.com/acgotaku/BaiduExporter)，[115网盘](https://github.com/acgotaku/115)，[迅雷离线](https://github.com/binux/ThunderLixianExporter)
 - 在设置里面可以编辑aria2.conf配置文件，保存并重启app即可
 - 如果需要修改默认下载路径，比如外置硬盘或者其他盘符，直接在网页插件里面设置绝对路径即可
-- 百度网盘非会员用户如果速度不理想可以尝试下这个User-Agent(netdisk;2.0.0;pc;pc-mac;10.12;macbaiduyunguanjia)，不能保证一定有速度
+- 速度不理想可以尝试下这个User-Agent(netdisk;2.0.0;pc;pc-mac;10.12;macbaiduyunguanjia)，百度网盘导出插件里面替换原来的User-Agent
 
 ## Download:
 
@@ -42,6 +42,4 @@ Aria2GUI
 
 ##License
 
-![GPLv3](https://www.gnu.org/graphics/gplv3-127x51.png)
-
-Aria2GUI is licensed under [GNU General Public License](https://www.gnu.org/licenses/gpl.html) Version 3 or later.
+Aria2GUI is licensed under [MIT License](http://choosealicense.com/licenses/mit/) 

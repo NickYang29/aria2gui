@@ -8,9 +8,8 @@
 
 #import "AppDelegate.h"
 #import "WindowController.h"
-#import "MASPreferencesWindowController.h"
-#import "GeneralPreferencesViewController.h"
-#import "AdvancedPreferencesViewController.h"
+#import "AppPrefsWindowsController.h"
+
 
 @implementation AppDelegate
 
@@ -55,8 +54,13 @@
     //~/Library/Application Support/com.Aria2GUI/sh/
     [fileManager createFileAtPath:startAriaPath contents:nil attributes:nil];
     
-    NSString *dir = [@"~/Downloads/" stringByExpandingTildeInPath];
-
+    NSString *dir = [[NSUserDefaults standardUserDefaults] objectForKey:Aria2GUI_SAVE_PATH];
+    
+    if (!dir || [dir length] == 0)
+    {
+        dir = [@"~/Downloads" stringByExpandingTildeInPath];
+    }
+    
     NSString *shCommand = [NSString stringWithFormat:@"%@ --dir=%@ --conf-path=%@ --input-file=%@ --save-session=%@ -D",[[NSBundle mainBundle] pathForResource:@"aria2gui" ofType:nil],dir,[[NSBundle mainBundle] pathForResource:@"aria2" ofType:@"conf"],[[NSBundle mainBundle] pathForResource:@"aria2" ofType:@"session"],[[NSBundle mainBundle] pathForResource:@"aria2" ofType:@"session"]];
                                
     [shCommand writeToFile:startAriaPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -77,39 +81,10 @@
     [task launch];
 }
 
-- (IBAction)openPreferences:(id __unused)sender
+- (IBAction)openPreferences:(id)sender
 {
-    [self.preferencesWindowController showWindow:nil];
+    [[AppPrefsWindowsController sharedPrefsWindowController] showWindow:nil];
 }
-
-
-- (NSWindowController *)preferencesWindowController
-{
-    if (_preferencesWindowController == nil)
-    {
-        NSViewController *generalViewController = [[GeneralPreferencesViewController alloc] init];
-        NSViewController *advancedViewController = [[AdvancedPreferencesViewController alloc] init];
-        NSArray *controllers = [[NSArray alloc] initWithObjects:generalViewController, advancedViewController, nil];
-        NSString *title = NSLocalizedString(@"Preferences", @"Common title for Preferences window");
-        _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers title:title];
-    }
-    return _preferencesWindowController;
-}
-
-
-
-NSString *const kFocusedAdvancedControlIndex = @"FocusedAdvancedControlIndex";
-
-- (NSInteger)focusedAdvancedControlIndex
-{
-    return [[NSUserDefaults standardUserDefaults] integerForKey:kFocusedAdvancedControlIndex];
-}
-
-- (void)setFocusedAdvancedControlIndex:(NSInteger)focusedAdvancedControlIndex
-{
-    [[NSUserDefaults standardUserDefaults] setInteger:focusedAdvancedControlIndex forKey:kFocusedAdvancedControlIndex];
-}
-
 
 
 

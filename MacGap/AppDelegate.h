@@ -8,19 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+
 @class WindowController;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate,NSUserNotificationCenterDelegate>{
-    NSWindowController *_preferencesWindowController;
-    
-}
-
+@interface AppDelegate : NSObject <NSApplicationDelegate,NSUserNotificationCenterDelegate>
 
 @property (retain, nonatomic) WindowController *windowController;
-@property (nonatomic, readonly) NSWindowController *preferencesWindowController;
-@property (nonatomic) NSInteger focusedAdvancedControlIndex;
 
 - (IBAction)openPreferences:(id)sender;
+
 
 
 
