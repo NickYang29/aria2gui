@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2015 Binux <roy@binux.me>
  *
  * This file is part of YAAW (https://github.com/binux/yaaw).
@@ -17,7 +17,12 @@
  * from http://www.gnu.org/licenses/lgpl.txt
  *
  */
-
+.close {
+    float: left;
+}
+.setting-head,.add-task{
+  padding: 20px;
+}
 .select-box {
     cursor: pointer;
 }
@@ -419,7 +424,7 @@
     padding-right: 118px;
 }
 #uri-input {
-    width: 100%; 
+    width: 100%;
 }
 #uri-textarea {
     box-sizing: border-box;
@@ -544,4 +549,4 @@
     padding-right: 0;
 }
 
-/* vim: set et sw=4 ts=4 sts=4 fdm=marker ff=unix fenc=utf8: */ 
+/* vim: set et sw=4 ts=4 sts=4 fdm=marker ff=unix fenc=utf8: */
